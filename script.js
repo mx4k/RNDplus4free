@@ -3,21 +3,26 @@
 // @namespace   steinpreis.de
 // @description Ändert unter anderem die serifenlose Schriftart auf epaper.haz.de
 // @include     *epaper.haz.de/*
-// @version     0.2
+// @require     'https://fonts.googleapis.com/css?family=Droid+Serif'
+// @version     07.11.2016
 // @grant       GM_addStyle
 // ==/UserScript==
+
+
+var droidserif = document.createElement('style');
+droidserif.innerHTML = "@import url('https://fonts.googleapis.com/css?family=Droid+Serif');";
+document.body.appendChild(droidserif);
 
 
 // Schriftart geändert
 
 GM_addStyle ( ".newscontainer {" + 
-             "font-family: Droid Serif !important; " +
-             "font-size: 17px !important; " +
+             "font: 17px Droid Serif !important; " +
              "@import url('https://fonts.googleapis.com/css?family=Droid+Serif') !important;} " );
 
+
 GM_addStyle ( ".previewbox.article {" + 
-             "font-family: Droid Serif !important; " +
-             "font-size: 17px !important; " +
+             "font: 17px Droid Serif !important; " +
              "@import url('https://fonts.googleapis.com/css?family=Droid+Serif') !important;} " );
 
 
