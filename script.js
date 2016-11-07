@@ -8,17 +8,17 @@
 // ==/UserScript==
 
 
-// Schriftart in Artikelcontainerzu Poly geändert
+// Schriftart geändert
 
 GM_addStyle ( ".newscontainer {" + 
              "font-family: Droid Serif !important; " +
-             "font-size: 16px !important; " +
-             "@import url('https://fonts.googleapis.com/css?family=Open+Sans') !important;} " );
+             "font-size: 17px !important; " +
+             "@import url('https://fonts.googleapis.com/css?family=Droid+Serif') !important;} " );
 
 GM_addStyle ( ".previewbox.article {" + 
              "font-family: Droid Serif !important; " +
-             "font-size: 16px !important; " +
-             "@import url('https://fonts.googleapis.com/css?family=Open+Sans') !important;} " );
+             "font-size: 17px !important; " +
+             "@import url('https://fonts.googleapis.com/css?family=Droid+Serif') !important;} " );
 
 
 // Artikelbreite erhöht
