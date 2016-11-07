@@ -8,41 +8,29 @@
 // @grant       GM_addStyle
 // ==/UserScript==
 
-
+// Droidsans laden
 var droidserif = document.createElement('style');
 droidserif.innerHTML = "@import url('https://fonts.googleapis.com/css?family=Droid+Serif');";
 document.body.appendChild(droidserif);
 
 
-// Schriftart geändert
-
+// Schriftart Artikel ändern
 GM_addStyle ( ".newscontainer {" + 
-             "font: 17px Droid Serif !important; " +
-             "@import url('https://fonts.googleapis.com/css?family=Droid+Serif') !important;} " );
-
-
+             "font: 17px Droid Serif !important;} " );
 GM_addStyle ( ".previewbox.article {" + 
-             "font: 17px Droid Serif !important; " +
-             "@import url('https://fonts.googleapis.com/css?family=Droid+Serif') !important;} " );
-
+             "font: 17px Droid Serif !important;} " );
 
 // Artikelbreite erhöht
-
 GM_addStyle ( ".articlebox { width: 750px !important; } " );
-
 
 // Lightbox verdunkelt
 GM_addStyle ( "#lightboxbackground { opacity:.7;} " );
 
-
 // Datum im Header verkleinert
-
 GM_addStyle ( "#header .head .date { margin-top:2px !important; " +
              "margin-left:2px !important;} " );
 
-
 // Header verkleinert und angepasst
-
 GM_addStyle ( "#header .head .logo { cursor:default !important; " +
              "position: relative !important; "+
              "height: 45px !important;}" );
@@ -57,7 +45,6 @@ GM_addStyle ( ".toolbar { background-image:none !important; " +
              "border-bottom-style: solid !important;" +
              "border-bottom-width:1px !important;" +
              "height:26px !important;}");
-
 
 // Sidebar links angepasst
 GM_addStyle ( "#leftmenu { background-image:none !important; " +
