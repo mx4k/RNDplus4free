@@ -1,63 +1,34 @@
 // ==UserScript==
-// @name        haz epaper anpassungen
-// @namespace   steinpreis.de
-// @description Ändert unter anderem die serifenlose Schriftart auf epaper.haz.de
-// @include     *epaper.haz.de/*
-// @version     07.11.2016
-// @grant       GM_addStyle
+// @name     haz4f
+// @description Laden des Artikel-Textes aus dem JSON im Quelltext
+// @version  0.1
+// @require https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
+// @include https://*.haz.de/*
 // ==/UserScript==
 
-// Droid Serif laden
-var droidserif = document.createElement('style');
-droidserif.innerHTML = "@import url('https://fonts.googleapis.com/css?family=Droid+Serif');";
-document.body.appendChild(droidserif);
+var scripts = document.getElementsByTagName("script");
 
-// Schriftart Artikel ändern
-GM_addStyle ( ".newscontainer {" + 
-             "font: 17px Droid Serif !important;} " );
-GM_addStyle ( ".previewbox.article {" + 
-             "font: 17px Droid Serif !important;} " );
+for(var i=0; i < scripts.length; i++){
+  	 
+    if(scripts[i].type == "application/ld+json"){
+    	unsafeWindow.console.log("Lade Script Nummer: " + i);
+		script_text=scripts[i].innerHTML;
+		try{
+        	unsafeWindow.console.log("Parse Script Nummer: " + i);
+      		article = JSON.parse(script_text);
+				if(article.articleBody != ""){
+        			article_text = article.articleBody;
+        			unsafeWindow.console.log(article_text);
+				}
+		}
+		catch(err) {
+			console.log(i);
+		}
+    }
+}
 
-// Artikelbreite erhöht
-GM_addStyle ( ".articlebox { width: 750px !important; } " );
+//$('.pdb-article-body-paidcontentintro').css({'display' : 'none'});
+$('.pdb-article-paidcontent-registration').css({'display' : 'none'});
+$('.pdb-article-body-blurred').css({'display' : 'none'});
 
-// Lightbox verdunkelt
-GM_addStyle ( "#lightboxbackground { opacity:.7;} " );
-
-// Datum im Header verkleinert
-GM_addStyle ( "#header .head .date { margin-top:2px !important; " +
-             "margin-left:2px !important;} " );
-
-// Header verkleinert und angepasst
-GM_addStyle ( "#header .head .logo { cursor:default !important; " +
-             "position: relative !important; "+
-             "height: 45px !important;}" );
-GM_addStyle ( "#header .head { height: inherit !important; " +
-             "border-bottom: #016aa1 !important;" +
-             "border-bottom-style: solid !important;" +
-             "border-bottom-width:1px !important; }");
-GM_addStyle ( ".logo { background-size:contain !important;} " );
-GM_addStyle ( ".divider { height:0px !important;} " );
-GM_addStyle ( ".toolbar { background-image:none !important; " +
-             "border-bottom: #016aa1 !important;" +
-             "border-bottom-style: solid !important;" +
-             "border-bottom-width:1px !important;" +
-             "height:26px !important;}");
-
-// Sidebar links angepasst
-GM_addStyle ( "#leftmenu { background-image:none !important; " +
-             "background: whitesmoke !important; "+
-             "margin: 10px 24px 20px 10px !important;}" );
-GM_addStyle ( "#leftmenudynamicsections { height:502px !important; }" );
-
-// Sidebar rechts angepasst
-GM_addStyle ( ".pages li.selected .barleft { background-image:none !important; }" );
-GM_addStyle ( ".pages li.selected .bartop { background-image:none !important; }" );
-GM_addStyle ( ".pages li.selected .barright { background-image:none !important; }" );
-GM_addStyle ( ".pages li.selected .barbottom { background-image:none !important; }" );
-GM_addStyle ( ".pages li { margin:0px 0 !important; }" );
-
-
-// Höhe gnaze Seite anpassen
-GM_addStyle ( ".maincontent .newspaperpage .previewpage { height:710px !important; }" );
-GM_addStyle ( ".maincontent { margin:10px 0 0; } " );
+document.getElementsByClassName("pdb-article-body")[0].innerHTML = article_text;
