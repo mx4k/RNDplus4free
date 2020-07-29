@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name     haz4f
 // @description Laden des Artikel-Textes aus dem JSON im Quelltext
-// @version  0.1
+// @version  0.2
 // @require https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
 // @include https://*.haz.de/*
 // @include https://*.neuepresse.de/*
