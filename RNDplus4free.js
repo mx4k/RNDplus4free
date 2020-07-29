@@ -9,15 +9,12 @@
 // @include https://*.waz-online.de/*
 // @include https://*.dnn.de/*
 // @include https://*.goettinger-tageblatt.de/*
-// @include https://*.gnz.de/*
 // @include https://*.lvz.de/*
 // @include https://*.ln-online.de/*
 // @include https://*.maz-online.de/*
-// @include https://*.naumburger-tageblatt.de/*
 // @include https://*.ostsee-zeitung.de/*
 // @include https://*.paz-online.de/*
 // @include https://*.sn-online.de/*
-
 // ==/UserScript==
 
 var scripts = document.getElementsByTagName("script");
