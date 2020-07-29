@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name     haz4f
+// @name     RNDplus4free
 // @description Laden des Artikel-Textes aus dem JSON im Quelltext
 // @version  0.2
 // @require https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
