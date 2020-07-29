@@ -4,6 +4,20 @@
 // @version  0.1
 // @require https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
 // @include https://*.haz.de/*
+// @include https://*.neuepresse.de/*
+// @include https://*.sn-online.de/*
+// @include https://*.waz-online.de/*
+// @include https://*.dnn.de/*
+// @include https://*.goettinger-tageblatt.de/*
+// @include https://*.gnz.de/*
+// @include https://*.lvz.de/*
+// @include https://*.ln-online.de/*
+// @include https://*.maz-online.de/*
+// @include https://*.naumburger-tageblatt.de/*
+// @include https://*.ostsee-zeitung.de/*
+// @include https://*.paz-online.de/*
+// @include https://*.sn-online.de/*
+
 // ==/UserScript==
 
 var scripts = document.getElementsByTagName("script");
