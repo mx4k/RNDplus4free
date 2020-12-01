@@ -18,4 +18,4 @@ Works on this websites:
 Installation
 
 - Install Tampermonkey from https://www.tampermonkey.net
-- Load userscript from https://raw.github.com/mx4k/RNDplus4free/RNDplus4free.user.js
+- Load userscript from https://github.com/mx4k/RNDplus4free/raw/master/RNDplus4free.user.js
