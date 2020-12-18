@@ -26,7 +26,7 @@ for(var i=0; i < scripts.length; i++){
     if(scripts[i].type == "application/ld+json"){
 		self.script_text=scripts[i].innerHTML;
 		try{
-      		self.article = JSON.parse(self.script_text);
+      			self.article = JSON.parse(self.script_text);
 				if(self.article.articleBody != ""){
         			self.article_text = self.article.articleBody;
 				}
