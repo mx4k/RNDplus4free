@@ -13,6 +13,7 @@ Works on this websites:
 - https://www.ostsee-zeitung.de
 - https://www.paz-online.de
 - https://www.sn-online.de
+- https://www.cz.de
 
 
 Installation
