@@ -14,6 +14,7 @@
 // @include https://*.ostsee-zeitung.de/*
 // @include https://*.paz-online.de/*
 // @include https://*.sn-online.de/*
+// @include https://*.cz.de/*
 // ==/UserScript==
 
 self.script_text = "";
