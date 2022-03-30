@@ -3,6 +3,9 @@ Works on this websites:
 
 - https://www.haz.de
 - https://www.neuepresse.de
+
+Has worked until 0.3 with this sites. Should be working after they switch to the new design. Is worth it to test.
+
 - https://www.sn-online.de
 - https://www.waz-online.de
 - https://www.dnn.de
