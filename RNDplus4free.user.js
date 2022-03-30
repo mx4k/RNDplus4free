@@ -1,45 +1,67 @@
 // ==UserScript==
 // @name     RNDplus4free
 // @description Laden des Artikel-Textes aus dem JSON im Quelltext
-// @version  0.3
-// @include https://*.haz.de/*
-// @include https://*.neuepresse.de/*
-// @include https://*.sn-online.de/*
-// @include https://*.waz-online.de/*
-// @include https://*.dnn.de/*
-// @include https://*.goettinger-tageblatt.de/*
-// @include https://*.lvz.de/*
-// @include https://*.ln-online.de/*
-// @include https://*.maz-online.de/*
-// @include https://*.ostsee-zeitung.de/*
-// @include https://*.paz-online.de/*
-// @include https://*.sn-online.de/*
-// @include https://*.cz.de/*
+// @version  0.4
+// @include https://*.haz.de/*.html
+// @include https://*.neuepresse.de/*.html
 // ==/UserScript==
 
-self.script_text = "";
-self.article = "";
-self.article_text = "";
+var script_text = "";
+var article = "";
+var article_text = "";
 
-var scripts = document.getElementsByTagName("script");
+// Function added to wait for page to load (thx https://stackoverflow.com/a/49606079)
+(function() {
+    var origOpen = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function(method, url) {
+        this.addEventListener('load', function() {
+            console.log('XHR finished loading', method, url);
+            get_article();
+            change_page();
+        });
 
-for(var i=0; i < scripts.length; i++)
-{
-    if(scripts[i].type == "application/ld+json")
+        this.addEventListener('error', function() {
+            console.log('XHR errored out', method, url);
+        });
+        origOpen.apply(this, arguments);
+    };
+})();
+
+function get_article(){
+    var scripts = document.getElementsByTagName("script");
+
+    for(var i=0; i < scripts.length; i++)
     {
-		self.script_text=scripts[i].innerHTML;
-		try
-		{
-      			self.article = JSON.parse(self.script_text);
-				if(self.article.articleBody != "")
-				{
-        				self.article_text = self.article.articleBody;
-				}
-		}
-		catch(err) {
-			console.log(i);
-		}
+        if(scripts[i].type == "application/ld+json")
+        {
+            script_text=scripts[i].innerHTML;
+            try
+            {
+                article = JSON.parse(script_text);
+                if(article.articleBody != "")
+                {
+                    article_text = article.articleBody;
+                }
+            }
+            catch(err) {
+                console.log(i);
+            }
+        }
     }
 }
 
-document.getElementsByClassName("pdb-article-body")[0].innerHTML = self.article_text;
+function change_page(){
+    // delete ads (thx https://stackoverflow.com/a/4275292)
+    var offer_element = document.querySelectorAll("[id^=piano-lightbox-article-")[0];
+    offer_element.parentNode.removeChild(offer_element);
+
+    // make header fully visible
+    document.querySelectorAll("[class^=ArticleHeadstyled__ArticleTeaserContainer]")[0].style.height = "100%";
+
+    // remove headline 2
+    document.querySelectorAll("[class^=Headlinestyled__Headline")[1].innerHTML = "";
+
+    // insert gathered article text
+    document.querySelectorAll("[class^=Textstyled__InlineText")[0].innerHTML = article_text;
+
+}
