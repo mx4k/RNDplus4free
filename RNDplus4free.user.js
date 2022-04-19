@@ -2,8 +2,8 @@
 // @name     RNDplus4free
 // @description Laden des Artikel-Textes aus dem JSON im Quelltext
 // @version  0.4
-// @include https://*.haz.de/*.html
-// @include https://*.neuepresse.de/*.html
+// @match https://*.haz.de/*.html
+// @match https://*.neuepresse.de/*.html
 // ==/UserScript==
 
 var script_text = "";
