@@ -1,9 +1,19 @@
 // ==UserScript==
 // @name     RNDplus4free
 // @description Laden des Artikel-Textes aus dem JSON im Quelltext
-// @version  0.5.0
+// @version  0.5.1
 // @match https://*.haz.de/*.html*
 // @match https://*.neuepresse.de/*.html*
+// @match https://*.sn-online.de/*.html*
+// @match https://*.waz-online.de/*.html*
+// @match https://*.dnn.de/*.html*
+// @match https://*.goettinger-tageblatt.de/*.html*
+// @match https://*.lvz.de/*.html*
+// @match https://*.ln-online.de/*.html*
+// @match https://*.maz-online.de/*.html*
+// @match https://*.ostsee-zeitung.de/*.html*
+// @match https://*.paz-online.de/*.html*
+// @match https://*.sn-online.de/*.html*
 // ==/UserScript==
 
 function extractTextAndHeaderSrc(content) {
