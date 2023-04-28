@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name     RNDplus4free
 // @description Laden des Artikel-Textes aus dem JSON im Quelltext
-// @version  0.5.3
+// @version  0.5.4
 // @match https://*.haz.de/*.html*
 // @match https://*.neuepresse.de/*.html*
 // @match https://*.sn-online.de/*.html*
@@ -91,7 +91,7 @@ function deleteClassByPart(className, classPart) {
   }
 }
 
-deleteClassByPart('ArticleHeadstyled__ArticleTeaserContainer-sc-1xd2qac-1', 'jgJYOM'); // Call the function with the specified class name and class name part to remove the class names that match the specified class name part from all elements with the specified class name in the document
+deleteClassByPart('ArticleHeadstyled__ArticleTeaserContainer-sc-1xd2qac-1', 'hBZztO'); // Call the function with the specified class name and class name part to remove the class names that match the specified class name part from all elements with the specified class name in the document
 
 
 function updateParagraphContentWithClass(objType, className, newContent) {
