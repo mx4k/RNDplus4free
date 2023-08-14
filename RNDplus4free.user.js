@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name     RNDplus4free
 // @description Laden des Artikel-Textes aus dem JSON im Quelltext
-// @version  0.5.5
+// @version  0.5.6
 // @match https://*.haz.de/*.html*
 // @match https://*.neuepresse.de/*.html*
 // @match https://*.sn-online.de/*.html*
@@ -109,7 +109,7 @@ function updateParagraphContentWithClass(objType, className, newContent) {
 }
 
 const objType = 'div'; // The type of HTML element to search for
-const className = 'ArticleHeadstyled__ArticleTeaserContainer-sc-1xd2qac-1'; // The starting part of the class name to match
+const className = 'Articlestyled__ArticleBodyWrapper-sc-7y75gq-1'; // The starting part of the class name to match
 const newContent = extractedValues.text.join("<br />"); // The new content to set for the matching element, joined with "<br />" as a line break
 updateParagraphContentWithClass(objType, className, newContent); // Call the function with the specified object type, class name, and new content to update the innerHTML of the matching element
 
