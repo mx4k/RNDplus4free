@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name     RNDplus4free
 // @description Laden des Artikel-Textes aus dem JSON im Quelltext
-// @version  0.5.7
+// @version  0.5.8
 // @match https://*.haz.de/*.html*
 // @match https://*.neuepresse.de/*.html*
 // @match https://*.sn-online.de/*.html*
@@ -30,7 +30,7 @@ function extractTextAndHeaderSrc(content) {
       textArray.push("<p class=\"article-header\">"+element.text+"</p>");
     } else if (element.type === "image") {
       // If the element type is "image", create a div element with a class "Imagestyled__Container-sc-1io480m-0 fAGtfK", containing an image element with a source (src) value from the element's imageInfo object, and push it to the textArray
-      textArray.push("<div data-testid=\"image\" class=\"ArticleImagestyled__ArticleImageContainer-sc-11hkcjt-0 fAGtfK\"><img src="+element.imageInfo.src+"></div>");
+      textArray.push("<div data-testid=\"image\" class=\"ArticleImagestyled__ArticleImageContainer-sc-11hkcjt-0 fAGtfK\"><img src="+element.imageInfo.src+" width=\"596\"></div>");
     }
   });
 
@@ -102,19 +102,16 @@ setTimeout(function() {
     const extractedValues = extractTextAndHeaderSrc(Fusion.globalContent); // Call the function with Fusion.globalContent as the argument and store the returned result in extractedValues
     console.log("Extracted text: ", extractedValues.text); // Output the extracted text and header values to the console
 
-    const toRemoveObjTypeToRemoveClassByTagName = "svg"; // Define the tag name of the elements to be removed
-    removeElementByTag(toRemoveObjTypeToRemoveClassByTagName); // Call the function with the specified tag name to remove all elements with that tag name from the document
+    removeElementByTag("svg"); // Removing banner
 
-    const toRemoveObjTypeToRemoveClassByClassName = 'div'; // Define the tag type of the elements to be removed
-    const toRemoveClassByClassName = "ArticleContentLoaderstyled__Gradient-sc-1npmba7-0"; // Define the class name part to match for elements to be removed
-    deleteElementsByTypeAndClassPart(toRemoveObjTypeToRemoveClassByClassName, toRemoveClassByClassName); // Call the function with the specified tag type and class name part to remove all elements with that tag type and matching class name part from the document
+    deleteElementsByTypeAndClassPart('div', "ArticleContentLoaderstyled__Gradient-sc-1npmba7-0"); // Removing loading div
 
-    deleteClassByPart('ArticleHeadstyled__ArticleTeaserContainer-sc-tdzyy5-1', 'fJDcrZ'); // Call the function with the specified class name and class name part to remove the class names that match the specified class name part from all elements with the specified class name in the document
+    deleteElementsByTypeAndClassPart('span', "gpuuGw"); //Removing first paragraph which is visible by default
 
-    const objType = 'div'; // The type of HTML element to search for
-    const className = 'Articlestyled__ArticleBodyWrapper-sc-7y75gq-1'; // The starting part of the class name to match
-    const newContent = extractedValues.text.join("<br />"); // The new content to set for the matching element, joined with "<br />" as a line break
-    updateParagraphContentWithClass(objType, className, newContent); // Call the function with the specified object type, class name, and new content to update the innerHTML of the matching element
+    deleteClassByPart('ArticleHeadstyled__ArticleTeaserContainer-sc-tdzyy5-1', 'fJDcrZ'); //remove class for style reasons
+
+    const newContent = extractedValues.text.join("<br />"); // Joining content with <br />
+    updateParagraphContentWithClass('div', 'Articlestyled__ArticleBodyWrapper-sc-7y75gq-1', newContent); // Updating element with content
 
 
     const styleElement = document.createElement('style'); // Create a new <style> element
