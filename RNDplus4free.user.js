@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name     RNDplus4free
 // @description Laden des Artikel-Textes aus dem JSON im Quelltext
-// @version  0.5.8
+// @version  0.5.9
 // @match https://*.haz.de/*.html*
 // @match https://*.neuepresse.de/*.html*
 // @match https://*.sn-online.de/*.html*
@@ -16,6 +16,12 @@
 // @match https://*.sn-online.de/*.html*
 // @match https://*.rnd.de/*.html*
 // ==/UserScript==
+
+// Redirect from AMP to normal site
+function redirectWithoutValidAmp(currentUrl) {
+    let newUrl = currentUrl.replace("outputType=valid_amp", "");
+    window.location.href = newUrl;
+}
 
 function extractTextAndHeaderSrc(content) {
   const textArray = []; // Create an empty array to store extracted text and header
@@ -40,7 +46,6 @@ function extractTextAndHeaderSrc(content) {
   };
 }
 
-
 function removeElementByTag(tagName) {
   const elements = document.getElementsByTagName(tagName); // Get all elements with the specified tag name from the document
   const elementsArray = Array.from(elements); // Convert the HTMLCollection of elements to an array for easier manipulation
@@ -48,7 +53,6 @@ function removeElementByTag(tagName) {
     singleElement.remove(); // Loop through each element in the array and remove it from the document
   });
 }
-
 
 function deleteElementsByTypeAndClassPart(type, classPart) {
   const elements = document.getElementsByTagName(type); // Get all elements with the specified tag type from the document
@@ -67,7 +71,6 @@ function deleteElementsByTypeAndClassPart(type, classPart) {
   }
 }
 
-
 function deleteClassByPart(className, classPart) {
   const regex = new RegExp(classPart, 'g'); // Create a regular expression object with the specified class name part as a pattern to match
   const elements = document.getElementsByClassName(className); // Get all elements with the specified class name from the document
@@ -80,7 +83,6 @@ function deleteClassByPart(className, classPart) {
     obj.className = updatedClassNames.join(' '); // Join the updated class names array back into a string and set it as the new value for the element's className property, effectively removing the class names that match the specified class name part
   }
 }
-
 
 function updateParagraphContentWithClass(objType, className, newContent) {
   // Find the first element that matches the specified object type and has a class name that starts with the specified class name
@@ -95,9 +97,13 @@ function updateParagraphContentWithClass(objType, className, newContent) {
   }
 }
 
-
 // Added timeout to get around the annoying lazy loading of the website resources 
 setTimeout(function() {
+    // redirect to normal site if AMP
+    if (window.location.href.includes("outputType=valid_amp")) {
+    redirectWithoutValidAmp(window.location.href);
+    }
+
     console.log("Waiting...");
     const extractedValues = extractTextAndHeaderSrc(Fusion.globalContent); // Call the function with Fusion.globalContent as the argument and store the returned result in extractedValues
     console.log("Extracted text: ", extractedValues.text); // Output the extracted text and header values to the console
