@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name     RNDplus4free
 // @description Laden des Artikel-Textes aus dem JSON im Quelltext
-// @version  0.5.9a
+// @version  0.5.10a
 // @match https://*.haz.de/*.html*
 // @match https://*.neuepresse.de/*.html*
 // @match https://*.sn-online.de/*.html*
@@ -110,14 +110,15 @@ setTimeout(function() {
 
     removeElementByTag("svg"); // Removing banner
 
-    deleteElementsByTypeAndClassPart('div', "ArticleContentLoaderstyled__Gradient-sc-1npmba7-0"); // Removing loading div
+    deleteElementsByTypeAndClassPart('div', "ArticleContentLoaderstyled__Gradient-sc-"); // Removing loading div
+    deleteElementsByTypeAndClassPart('div', "Articlestyled__FullscreenPaywallScrollContainer-sc-"); // Removing ad div
 
     deleteElementsByTypeAndClassPart('span', "gpuuGw"); //Removing first paragraph which is visible by default
 
-    deleteClassByPart('ArticleHeadstyled__ArticleTeaserContainer-sc-tdzyy5-1', 'fJDcrZ'); //remove class for style reasons
+    deleteClassByPart('ArticleHeadstyled__ArticleTeaserContainer-sc-', 'fJDcrZ'); //remove class for style reasons
 
     const newContent = extractedValues.text.join("<br />"); // Joining content with <br />
-    updateParagraphContentWithClass('div', 'Articlestyled__ArticleBodyWrapper-sc-7y75gq-1', newContent); // Updating element with content
+    updateParagraphContentWithClass('div', 'Articlestyled__ArticleBodyWrapper-sc-', newContent); // Updating element with content
 
 
     const styleElement = document.createElement('style'); // Create a new <style> element
@@ -126,4 +127,5 @@ setTimeout(function() {
     // Insert CSS rules into the style sheet of the <style> element
     styleElement.sheet.insertRule('.article-text { color: #fff; mix-blend-mode: difference; margin: 0px; padding-bottom: 8px; padding-top: 8px; font-family: "Source Serif Pro", Palatino, "Droid Serif", serif; font-size: 17px; font-weight: 600; letter-spacing: 0px; line-height: 26px; }', 0);
     styleElement.sheet.insertRule('.article-header { color: #fff; mix-blend-mode: difference; font-family: "DIN Next LT Pro", Arial, Roboto, sans-serif; font-weight: 700; letter-spacing: -0.25px; font-size: 24px; line-height: 30px; }', 0);
-}, 1000);
+    styleElement.sheet.insertRule('.ArticleHeadstyled__ArticleSubHeadline-sc-tdzyy5-8 { height: 100% }', 0);
+}, 2000);
