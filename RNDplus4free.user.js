@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name     RNDplus4free
 // @description Laden des Artikel-Textes aus dem JSON im Quelltext
-// @version  0.5.10a
+// @version  0.5.11a
 // @match https://*.haz.de/*.html*
 // @match https://*.neuepresse.de/*.html*
 // @match https://*.sn-online.de/*.html*
@@ -13,8 +13,9 @@
 // @match https://*.maz-online.de/*.html*
 // @match https://*.ostsee-zeitung.de/*.html*
 // @match https://*.paz-online.de/*.html*
-// @match https://*.sn-online.de/*.html*
 // @match https://*.rnd.de/*.html*
+// @match https://*.dewezet.de/*.html*
+// @match https://*.cz.de/*.html*
 // ==/UserScript==
 
 // Redirect from AMP to normal site
