@@ -13,6 +13,8 @@ Works on this websites:
 - https://www.paz-online.de
 - https://www.sn-online.de
 - https://www.rnd.de
+- https://www.dewezet.de
+- https://www.cz.de
 
 Installation
 
