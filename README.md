@@ -15,6 +15,7 @@ Works on this websites:
 - https://www.rnd.de
 - https://www.dewezet.de
 - https://www.cz.de
+- https://www.szlz.de
 
 Installation
 
