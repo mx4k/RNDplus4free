@@ -16,6 +16,7 @@
 // @match https://*.rnd.de/*.html*
 // @match https://*.dewezet.de/*.html*
 // @match https://*.cz.de/*.html*
+// @match https://*.szlz.de/*.html*
 // ==/UserScript==
 
 // Redirect from AMP to normal site
