@@ -19,6 +19,8 @@
 // @match https://*.szlz.de/*.html*
 // ==/UserScript==
 
+/* global Fusion:readonly */
+
 // Redirect from AMP to normal site
 function redirectWithoutValidAmp(currentUrl) {
     let newUrl = currentUrl.replace("outputType=valid_amp", "");
