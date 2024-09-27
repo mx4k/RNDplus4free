@@ -19,6 +19,8 @@
 // @match https://*.szlz.de/*.html*
 // ==/UserScript==
 
+/* global Fusion:readonly */
+
 // Redirect from AMP to normal site
 function redirectWithoutValidAmp(currentUrl) {
     let newUrl = currentUrl.replace("outputType=valid_amp", "");
@@ -130,4 +132,7 @@ setTimeout(function() {
     styleElement.sheet.insertRule('.article-text { color: #fff; mix-blend-mode: difference; margin: 0px; padding-bottom: 8px; padding-top: 8px; font-family: "Source Serif Pro", Palatino, "Droid Serif", serif; font-size: 17px; font-weight: 600; letter-spacing: 0px; line-height: 26px; }', 0);
     styleElement.sheet.insertRule('.article-header { color: #fff; mix-blend-mode: difference; font-family: "DIN Next LT Pro", Arial, Roboto, sans-serif; font-weight: 700; letter-spacing: -0.25px; font-size: 24px; line-height: 30px; }', 0);
     styleElement.sheet.insertRule('.ArticleHeadstyled__ArticleSubHeadline-sc-tdzyy5-8 { height: 100% }', 0);
+
+    // Fix too narrow first paragraph
+    document.querySelector('.paywalledContent > p').setAttribute('style', 'height: 100%');
 }, 2000);
