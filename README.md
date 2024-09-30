@@ -16,6 +16,7 @@ Works on this websites:
 - https://www.dewezet.de
 - https://www.cz.de
 - https://www.szlz.de
+- https://www.saechsische.de
 
 Installation
 
