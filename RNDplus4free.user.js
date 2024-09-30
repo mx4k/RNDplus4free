@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name     RNDplus4free
 // @description Laden des Artikel-Textes aus dem JSON im Quelltext
-// @version  0.5.11a
+// @version  0.5.11b
 // @match https://*.haz.de/*.html*
 // @match https://*.neuepresse.de/*.html*
 // @match https://*.sn-online.de/*.html*
@@ -17,6 +17,7 @@
 // @match https://*.dewezet.de/*.html*
 // @match https://*.cz.de/*.html*
 // @match https://*.szlz.de/*.html*
+// @match https://*.saechsische.de/*.html*
 // ==/UserScript==
 
 /* global Fusion:readonly */
