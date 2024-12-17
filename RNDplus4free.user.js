@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name     RNDplus4free
 // @description Laden des Artikel-Textes aus dem JSON im Quelltext
-// @version  0.5.11b
+// @version  0.5.12
 // @match https://*.haz.de/*.html*
 // @match https://*.neuepresse.de/*.html*
 // @match https://*.sn-online.de/*.html*
@@ -91,7 +91,8 @@ function deleteClassByPart(className, classPart) {
 
 function updateParagraphContentWithClass(objType, className, newContent) {
   // Find the first element that matches the specified object type and has a class name that starts with the specified class name
-  const paragraphElement = document.querySelector(`${objType}[class^="${className}"]`);
+  const paragraphElements = document.querySelectorAll(`${objType}[class^="${className}"]`);
+  const paragraphElement = paragraphElements[paragraphElements.length - 1];
 
   if (paragraphElement) {
     // If an element is found, update its innerHTML with the new content
@@ -123,7 +124,7 @@ setTimeout(function() {
     deleteClassByPart('ArticleHeadstyled__ArticleTeaserContainer-sc-', 'fJDcrZ'); //remove class for style reasons
 
     const newContent = extractedValues.text.join("<br />"); // Joining content with <br />
-    updateParagraphContentWithClass('div', 'Articlestyled__ArticleBodyWrapper-sc-', newContent); // Updating element with content
+    updateParagraphContentWithClass('div', 'Articlestyled__CenteredContentWrapper-sc-', newContent); // Updating element with content
 
 
     const styleElement = document.createElement('style'); // Create a new <style> element
