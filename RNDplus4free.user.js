@@ -115,7 +115,7 @@ setTimeout(function() {
     const extractedValues = extractTextAndHeaderSrc(Fusion.globalContent); // Call the function with Fusion.globalContent as the argument and store the returned result in extractedValues
     console.log("Extracted text: ", extractedValues.text); // Output the extracted text and header values to the console
 
-    removeElementByTag("svg"); // Removing banner
+    deleteElementsByTypeAndClassPart('span', "ArticleHeadstyled__ArticleHeadPaidIconContainer-sc-"); // Removing banner
 
     deleteElementsByTypeAndClassPart('div', "ArticleContentLoaderstyled__Gradient-sc-"); // Removing loading div
     deleteElementsByTypeAndClassPart('div', "Articlestyled__FullscreenPaywallScrollContainer-sc-"); // Removing ad div
