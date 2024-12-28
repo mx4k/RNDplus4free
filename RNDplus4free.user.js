@@ -10,6 +10,7 @@
 // @match https://*.goettinger-tageblatt.de/*.html*
 // @match https://*.lvz.de/*.html*
 // @match https://*.ln-online.de/*.html*
+// @match https://*.kn-online.de/*.html*
 // @match https://*.maz-online.de/*.html*
 // @match https://*.ostsee-zeitung.de/*.html*
 // @match https://*.paz-online.de/*.html*
@@ -41,7 +42,7 @@ function extractTextAndHeaderSrc(content) {
       textArray.push("<p class=\"article-header\">"+element.text+"</p>");
     } else if (element.type === "image") {
       // If the element type is "image", create a div element with a class "Imagestyled__Container-sc-1io480m-0 fAGtfK", containing an image element with a source (src) value from the element's imageInfo object, and push it to the textArray
-      textArray.push("<div data-testid=\"image\" class=\"ArticleImagestyled__ArticleImageContainer-sc-11hkcjt-0 fAGtfK\"><img src="+element.imageInfo.src+" width=\"596\"></div>");
+      textArray.push("<div data-testid=\"image\" class=\"ArticleImagestyled__ArticleImageContainer-sc-11hkcjt-0 fAGtfK\"><img src="+element.imageInfo.src+" width=\"100%\"></div>");
     }
   });
 
@@ -114,7 +115,7 @@ setTimeout(function() {
     const extractedValues = extractTextAndHeaderSrc(Fusion.globalContent); // Call the function with Fusion.globalContent as the argument and store the returned result in extractedValues
     console.log("Extracted text: ", extractedValues.text); // Output the extracted text and header values to the console
 
-    removeElementByTag("svg"); // Removing banner
+    deleteElementsByTypeAndClassPart('span', "ArticleHeadstyled__ArticleHeadPaidIconContainer-sc-"); // Removing banner
 
     deleteElementsByTypeAndClassPart('div', "ArticleContentLoaderstyled__Gradient-sc-"); // Removing loading div
     deleteElementsByTypeAndClassPart('div', "Articlestyled__FullscreenPaywallScrollContainer-sc-"); // Removing ad div
@@ -131,8 +132,8 @@ setTimeout(function() {
     document.head.appendChild(styleElement); // Append the <style> element to the <head> of the document
 
     // Insert CSS rules into the style sheet of the <style> element
-    styleElement.sheet.insertRule('.article-text { color: #fff; mix-blend-mode: difference; margin: 0px; padding-bottom: 8px; padding-top: 8px; font-family: "Source Serif Pro", Palatino, "Droid Serif", serif; font-size: 17px; font-weight: 600; letter-spacing: 0px; line-height: 26px; }', 0);
-    styleElement.sheet.insertRule('.article-header { color: #fff; mix-blend-mode: difference; font-family: "DIN Next LT Pro", Arial, Roboto, sans-serif; font-weight: 700; letter-spacing: -0.25px; font-size: 24px; line-height: 30px; }', 0);
+    styleElement.sheet.insertRule('.article-text { mix-blend-mode: difference; margin: 0px; padding-bottom: 8px; padding-top: 8px; font-family: "Source Serif Pro", Palatino, "Droid Serif", serif; font-size: 17px; letter-spacing: 0px; line-height: 26px; }', 0);
+    styleElement.sheet.insertRule('.article-header { mix-blend-mode: difference; font-family: "DIN Next LT Pro", Arial, Roboto, sans-serif; font-weight: 700; letter-spacing: -0.25px; font-size: 24px; line-height: 30px; }', 0);
     styleElement.sheet.insertRule('.ArticleHeadstyled__ArticleSubHeadline-sc-tdzyy5-8 { height: 100% }', 0);
 
     // Fix too narrow first paragraph
