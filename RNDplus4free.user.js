@@ -10,6 +10,7 @@
 // @match https://*.goettinger-tageblatt.de/*.html*
 // @match https://*.lvz.de/*.html*
 // @match https://*.ln-online.de/*.html*
+// @match https://*.kn-online.de/*.html*
 // @match https://*.maz-online.de/*.html*
 // @match https://*.ostsee-zeitung.de/*.html*
 // @match https://*.paz-online.de/*.html*
