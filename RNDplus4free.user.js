@@ -44,6 +44,13 @@ function extractTextAndHeaderSrc(content) {
       // If the element type is "image", create a div element with a class "Imagestyled__Container-sc-1io480m-0 fAGtfK", containing an image element with a source (src) value from the element's imageInfo object, and push it to the textArray
       textArray.push("<div data-testid=\"image\" class=\"ArticleImagestyled__ArticleImageContainer-sc-11hkcjt-0 fAGtfK\"><img src="+element.imageInfo.src+" width=\"100%\"></div>");
       textArray.push("<p class=\"image-caption\">"+element.imageInfo.caption+"</p>");
+    } else if (element.type === "list") {
+      var text = ("<ul>");
+      element.list.items.forEach(item => {
+        text = text + "<li class=\"article-list-item\">" + item.text + "</li>";
+      });
+      text = text + "</ul>";
+      textArray.push(text);
     }
   });
 
@@ -117,7 +124,6 @@ setTimeout(function() {
     console.log("Extracted text: ", extractedValues.text); // Output the extracted text and header values to the console
 
     deleteElementsByTypeAndClassPart('span', "ArticleHeadstyled__ArticleHeadPaidIconContainer-sc-"); // Removing banner
-
     deleteElementsByTypeAndClassPart('div', "ArticleContentLoaderstyled__Gradient-sc-"); // Removing loading div
     deleteElementsByTypeAndClassPart('div', "Articlestyled__FullscreenPaywallScrollContainer-sc-"); // Removing ad div
 
@@ -135,6 +141,7 @@ setTimeout(function() {
     // Insert CSS rules into the style sheet of the <style> element
     styleElement.sheet.insertRule('.article-text { mix-blend-mode: difference; margin: 0px; padding-bottom: 8px; padding-top: 8px; font-family: "Source Serif Pro", Palatino, "Droid Serif", serif; font-size: 17px; letter-spacing: 0px; line-height: 26px; }', 0);
     styleElement.sheet.insertRule('.image-caption { mix-blend-mode: difference; margin: 0px; padding-bottom: 0px; padding-top: 0px; font-family: "Source Serif Pro", Palatino, "Droid Serif", serif; font-size: 12px; letter-spacing: 0px; line-height: 19px; }', 0);
+    styleElement.sheet.insertRule('.article-list-item { list-style: disc; margin-left : 1em; mix-blend-mode: difference; margin-top: 0px; margin-bottom: 0px; margin-right: 0px; padding-bottom: 8px; padding-top: 8px; font-family: "Source Serif Pro", Palatino, "Droid Serif", serif; font-size: 17px; letter-spacing: 0px; line-height: 26px; }', 0);
     styleElement.sheet.insertRule('.article-header { mix-blend-mode: difference; font-family: "DIN Next LT Pro", Arial, Roboto, sans-serif; font-weight: 700; letter-spacing: -0.25px; font-size: 24px; line-height: 30px; }', 0);
     styleElement.sheet.insertRule('.ArticleHeadstyled__ArticleSubHeadline-sc-tdzyy5-8 { height: 100% }', 0);
 
