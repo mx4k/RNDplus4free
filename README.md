@@ -1,5 +1,5 @@
-Loads hidden text from webpage sourcecode.
-Works on this websites:
+## Loads article text from sourcecode and injects into cleaned webpage
+### Works on this websites:
 
 - https://www.haz.de
 - https://www.neuepresse.de
@@ -18,7 +18,7 @@ Works on this websites:
 - https://www.szlz.de
 - https://www.saechsische.de
 
-Installation
+### Installation
 
 - Install Tampermonkey from https://www.tampermonkey.net
 - Load userscript from https://github.com/mx4k/RNDplus4free/raw/master/RNDplus4free.user.js
