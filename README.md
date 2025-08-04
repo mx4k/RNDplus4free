@@ -17,6 +17,7 @@
 - https://www.cz.de
 - https://www.szlz.de
 - https://www.saechsische.de
+- https://www.dieharke.de
 
 ### Installation
 
