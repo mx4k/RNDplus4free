@@ -19,6 +19,7 @@
 // @match https://*.cz.de/*.html*
 // @match https://*.szlz.de/*.html*
 // @match https://*.saechsische.de/*.html*
+// @match https://*.dieharke.de/*.html*
 // ==/UserScript==
 
 /* global Fusion:readonly */
