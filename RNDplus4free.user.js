@@ -119,8 +119,18 @@ setTimeout(function() {
     if (window.location.href.includes("outputType=valid_amp")) {
     redirectWithoutValidAmp(window.location.href);
     }
+    
+    // Check if the paid icon is present inside the h2 headline tag (but not the free period version)
+    const headlineElement = document.querySelector('h2[data-testid="headline"]');
+    const paidIconInHeadline = headlineElement ? headlineElement.querySelector('[data-testid="PaidIcon"]') : null;
+    const freePeriodIcon = headlineElement ? headlineElement.querySelector('[data-testid="PaidIconFreePeriod"]') : null;
 
-    console.log("Waiting...");
+    if (!paidIconInHeadline || freePeriodIcon) {
+        console.log("Not a paid article or is a free period article - skipping script execution");
+        return;
+    }
+
+    console.log("Paid article detected - processing...");
     const extractedValues = extractTextAndHeaderSrc(Fusion.globalContent); // Call the function with Fusion.globalContent as the argument and store the returned result in extractedValues
     console.log("Extracted text: ", extractedValues.text); // Output the extracted text and header values to the console
 
