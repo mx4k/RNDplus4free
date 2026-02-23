@@ -52,6 +52,9 @@ function extractTextAndHeaderSrc(content) {
       });
       text = text + "</ul>";
       textArray.push(text);
+    } else if (element.type === "oembed" || element.type === "rawHtml") {
+      // keep embedded or raw HTML objects
+      textArray.push(element.html);
     }
   });
 
