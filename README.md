@@ -28,4 +28,4 @@
 ### Usage
 
 Just browse one of the news pages from the above list.
-You can now have a pretty print view of an article by pressing "y". (Big thanks to @Notme112)
+You can now have a pretty print view of an article by pressing "y". (Big thanks to [@Notme112] (https://www.github.com/Notme112)!)
