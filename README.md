@@ -24,3 +24,8 @@
 
 - Install Tampermonkey from https://www.tampermonkey.net
 - Load userscript from https://github.com/mx4k/RNDplus4free/raw/master/RNDplus4free.user.js
+
+### Usage
+
+Just browse one of the news pages from the above list.
+You can now have a pretty print view of an article by pressing "y". (Big thanks to @Notme112)
