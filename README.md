@@ -19,6 +19,7 @@
 - https://www.szlz.de
 - https://www.saechsische.de
 - https://www.dieharke.de
+- https://www.ndz.de
 
 ### Installation
 
