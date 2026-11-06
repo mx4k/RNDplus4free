@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         RND – Artikel drucken
 // @namespace    de.notme112.printRNDArticle
-// @version      1.0
+// @version      1.1
 // @description  Ersetzt den Body durch den RND-Artikel und startet den Druckdialog mit Y
 // @match        https://*.haz.de/*.html*
 // @match        https://*.neuepresse.de/*.html*
@@ -21,6 +21,7 @@
 // @match        https://*.szlz.de/*.html*
 // @match        https://*.saechsische.de/*.html*
 // @match        https://*.dieharke.de/*.html*
+// @match        https://*.ndz.de/*.html*
 // @grant        none
 // ==/UserScript==
 
