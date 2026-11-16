@@ -22,6 +22,8 @@
 // @match        https://*.saechsische.de/*.html*
 // @match        https://*.dieharke.de/*.html*
 // @match        https://*.ndz.de/*.html*
+// @updateURL    https://github.com/mx4k/RNDplus4free/raw/refs/heads/master/printRNDArticle.user.js
+// @downloadURL  https://github.com/mx4k/RNDplus4free/raw/refs/heads/master/printRNDArticle.user.js
 // @grant        none
 // ==/UserScript==
 
@@ -43,10 +45,10 @@
             return;
         }
 
-        const article = document.querySelector('#contentMain > article');
+        const article = document.querySelector('#contentMain article');
 
         if (!article) {
-            console.warn('RND-Druck: #contentMain > article wurde nicht gefunden.');
+            console.warn('RND-Druck: #contentMain article wurde nicht gefunden.');
             return;
         }
 
@@ -63,4 +65,4 @@
             window.print();
         }, 100);
     });
-})();
+})()
